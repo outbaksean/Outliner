@@ -1,0 +1,6 @@
+@Outliner.API_HostAddress = http://localhost:5169
+
+GET {{Outliner.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

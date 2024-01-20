@@ -1,0 +1,1 @@
+openapi-generator-cli generate -g typescript-fetch -i https://localhost:7129/swagger/v1/swagger.json 
