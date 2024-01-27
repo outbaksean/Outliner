@@ -1,8 +1,8 @@
 <template>
   <div>
-    <h1>First Outline</h1>
     <div v-if="outlineNames.length">
-      <select v-model="selectedOutlineName" class="form-select w-50">
+      <select v-model="selectedOutlineName" class="form-select" @change="SelectOutline()">
+        <option v-if="!selectedOutlineName" value="" disabled>Select an outline</option>
         <option v-for="outlineName in outlineNames" :key="outlineName">
           {{ outlineName }}
         </option>
@@ -19,7 +19,10 @@ import { outlinerStore } from '@/stores/outliner'
 import { ref } from 'vue'
 
 const store = outlinerStore()
-await store.loadOutlines()
 const outlineNames = store.outlineNames
 const selectedOutlineName = ref('')
+
+function SelectOutline() {
+  store.selectOutline(selectedOutlineName.value)
+}
 </script>
