@@ -1,11 +1,12 @@
 <template>
-  <div class="w-25 p-2 m-2">
+  <div class="p-2 m-2">
     <SelectOutline />
   </div>
   <div v-if="selectedOutline">{{ selectedOutline.name }} - {{ selectedOutline.description }}</div>
   <div v-else>
     <p>No outline selected.</p>
   </div>
+  <div><MainTab v-if="store.selectedOutline" /></div>
   <div class="p-2 m-2 fixed-bottom">
     <MainSelector />
   </div>
@@ -14,6 +15,7 @@
 <script setup lang="ts">
 import SelectOutline from './components/SelectOutline.vue'
 import MainSelector from './components/MainSelector.vue'
+import MainTab from './components/MainTab.vue'
 import { outlinerStore } from '@/stores/outliner'
 import { storeToRefs } from 'pinia'
 

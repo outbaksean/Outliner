@@ -1,12 +1,19 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 import type { Outline } from '@/model/Outline'
+import { MainTabOptions } from '@/model/MainTabOptions'
 
 export const outlinerStore = defineStore('outliner', () => {
   const outlines = ref<Outline[]>([])
   const outlineNames = computed<string[]>(() => outlines.value.map((outline) => outline.name || ''))
   const selectedOutline = ref<Outline | null>(null)
   const localStorageKey = 'outbaksean_outliner'
+
+  const selectedMainTab = ref<MainTabOptions>(MainTabOptions.Settings)
+
+  const selectMainTab = (tab: MainTabOptions) => {
+    selectedMainTab.value = tab
+  }
 
   const loadOutlines = () => {
     const storedOutlines = localStorage.getItem(localStorageKey)
@@ -171,6 +178,8 @@ export const outlinerStore = defineStore('outliner', () => {
     loadOutlines,
     selectOutline,
     saveOutline,
-    loadSampleOutlines
+    loadSampleOutlines,
+    selectedMainTab,
+    selectMainTab
   }
 })
