@@ -1,7 +1,3 @@
-import type { Setting } from "./Setting";
+import type { ISubOutlineElement } from './ISubOutlineElement'
 
-export interface Character {
-    description?: string;
-    name?: string;
-    settings?: Setting[];
-}
+export interface Character extends ISubOutlineElement {}

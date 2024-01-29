@@ -2,13 +2,12 @@
   <div class="p-2 m-2">
     <SelectOutline />
   </div>
-  <div v-if="selectedOutline">{{ selectedOutline.name }} - {{ selectedOutline.description }}</div>
+  <div v-if="selectedOutline">
+    {{ selectedOutline.name }} - {{ selectedOutline.description }}
+    <OutlineAccordian />
+  </div>
   <div v-else>
     <p>No outline selected.</p>
-  </div>
-  <div><MainTab v-if="store.selectedOutline" /></div>
-  <div class="p-2 m-2 fixed-bottom">
-    <MainSelector />
   </div>
 </template>
 
@@ -18,6 +17,7 @@ import MainSelector from './components/MainSelector.vue'
 import MainTab from './components/MainTab.vue'
 import { outlinerStore } from '@/stores/outliner'
 import { storeToRefs } from 'pinia'
+import OutlineAccordian from './components/OutlineAccordian.vue'
 
 const store = outlinerStore()
 store.loadOutlines()
